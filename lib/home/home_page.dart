@@ -65,7 +65,11 @@ class HomePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           await Future.delayed(const Duration(milliseconds: 500));
-          Get.to(SearchPage());
+          Get.to(
+            SearchPage(
+              unidades: unidades,
+            ),
+          );
           // Get.to(SearchPage());
         },
         child: Icon(

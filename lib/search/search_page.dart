@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
+import 'package:proprios/detail/detail_page.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 // import 'package:proprios/home/widgets/custom_appbar.dart';
@@ -61,9 +62,10 @@ class MyController extends GetxController {
 }
 
 class SearchPage extends StatelessWidget {
+  final List<Map<String, dynamic>> unidades;
   final MyController controller = Get.put(MyController());
 
-  SearchPage({super.key});
+  SearchPage({super.key, required this.unidades});
 
   @override
   Widget build(BuildContext context) {
@@ -87,10 +89,40 @@ class SearchPage extends StatelessWidget {
                   itemCount: controller.unidadesFiltradas.length,
                   itemBuilder: (context, index) {
                     final unidade = controller.unidadesFiltradas[index];
-                    return ListTile(
-                      title: Text(unidade["unidade"]),
-                      subtitle: Text(unidade["descricao"]),
-                      trailing: Text(unidade["rededados"]),
+                    return InkWell(
+                      onTap: () {
+                        final matchingIndex = unidades.indexWhere(
+                            (item) => item['unidade'] == unidade['unidade']);
+                        Get.to(
+                          DetailPage(
+                            index: matchingIndex,
+                            unidades: unidades,
+                          ),
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          left: 20.0,
+                          right: 20.0,
+                          bottom: 20.0,
+                        ),
+                        child: ListTile(
+                          tileColor: Colors.greenAccent,
+                          title: Text(
+                            unidade["unidade"],
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          subtitle: Text(unidade["descricao"]),
+                          trailing: Text(
+                            unidade["rededados"],
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
                     );
                   },
                 ));
