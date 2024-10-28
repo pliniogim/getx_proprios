@@ -9,7 +9,7 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 
 Future main() async {
-  appWindow.size = const Size(300, 600);
+  appWindow.size = const Size(400, 800);
 
   //platform check, for android use sqlite on system
   if (Platform.isWindows || Platform.isLinux) {
@@ -37,7 +37,7 @@ Future main() async {
   //close db
   await db.close();
 
-  //run app passing result database
+  //run app passing result databaseq
   runApp(MyApp(
     unidades: result,
   ));

@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 
 Widget customContainter(String text, String data) {
   return Container(
+    decoration: BoxDecoration(
+      color: Colors.greenAccent,
+      borderRadius: BorderRadius.circular(10.0),
+    ),
     height: 60.0,
-    color: Colors.greenAccent,
     child: Padding(
       padding: const EdgeInsets.only(
-        top: 10.0,
-        bottom: 10.0,
-        left: 10.0,
-        right: 10.0,
+        top: 5.0,
+        bottom: 5.0,
+        left: 5.0,
+        right: 5.0,
       ),
       child: Row(
         children: [
