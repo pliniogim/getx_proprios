@@ -57,6 +57,12 @@ class MyController extends GetxController {
               .contains(searchText.value.toLowerCase()) ||
           unidades['rededados']
               .toLowerCase()
+              .contains(searchText.value.toLowerCase()) ||
+          unidades['vlandados']
+              .toLowerCase()
+              .contains(searchText.value.toLowerCase()) ||
+          unidades['olt']
+              .toLowerCase()
               .contains(searchText.value.toLowerCase()))
       .toList();
 }
@@ -116,7 +122,7 @@ class SearchPage extends StatelessWidget {
                           ),
                           subtitle: Text(unidade["descricao"]),
                           trailing: Text(
-                            unidade["rededados"],
+                            '${unidade["rededados"]} : ${unidade["vlandados"]}',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
