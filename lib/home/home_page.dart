@@ -3,9 +3,12 @@ import 'package:get/get.dart';
 import 'package:proprios/detail/detail_page.dart';
 import 'package:proprios/home/widgets/custom_appbar.dart';
 import 'package:proprios/search/search_page.dart';
+import 'package:proprios/vlan/vlan_page.dart';
 
 class HomePage extends StatelessWidget {
   final MyController controller = Get.put(MyController());
+  final vcontroller = Get.put(VlanController());
+
   final List<Map<String, dynamic>> unidades;
   HomePage({required this.unidades, super.key});
 
@@ -63,6 +66,7 @@ class HomePage extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        tooltip: 'Search...',
         onPressed: () async {
           await Future.delayed(const Duration(milliseconds: 500));
           Get.to(
