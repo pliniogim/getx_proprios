@@ -70,7 +70,7 @@ class HomePage extends StatelessWidget {
         onPressed: () async {
           await Future.delayed(const Duration(milliseconds: 500));
           Get.to(
-            SearchPage(
+            () => SearchPage(
               unidades: unidades,
             ),
           );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:proprios/redes/rede_dados.dart';
 import 'package:proprios/vlan/vlan_page.dart';
 
 customAppBar(List<Map<String, dynamic>> unidades) {
@@ -23,7 +24,22 @@ customAppBar(List<Map<String, dynamic>> unidades) {
           onPressed: () async {
             await Future.delayed(const Duration(milliseconds: 500));
             Get.to(
-              VlanPage(
+              () => VlanPage(
+                unidades: unidades,
+              ),
+            );
+          },
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.only(right: 12.0),
+        child: IconButton(
+          icon: const Icon(Icons.compare_arrows_rounded),
+          tooltip: 'Data networks',
+          onPressed: () async {
+            await Future.delayed(const Duration(milliseconds: 500));
+            Get.to(
+              () => RedeDados(
                 unidades: unidades,
               ),
             );
