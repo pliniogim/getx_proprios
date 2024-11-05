@@ -1,5 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:math';
+// import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proprios/home/widgets/custom_appbar.dart';
@@ -7,40 +6,50 @@ import 'package:proprios/home/widgets/custom_appbar.dart';
 class RedeDadosController extends GetxController {
   late List<Map<String, dynamic>> mutableList;
 
-  void updateList(List<Map<String, dynamic>> newList) {
-    mutableList = List<Map<String, dynamic>>.from(newList);
+  //Sort ipv4 addresses
+  List<String> sortIPv4Addresses(List<String> ipAddresses) {
+    List<int> numericalAddresses = [];
 
-    // List rd = (for item in mutableList){
-
-    // }
-
-    List<String> sortIPv4Addresses(List<String> ipAddresses) {
-      List<int> numericalAddresses = [];
-
-      // Convert IP addresses to numerical representations
-      for (String ip in ipAddresses) {
-        List<int> octets = ip.split('.').map(int.parse).toList();
-        int numericalAddress =
-            octets[0] << 24 | octets[1] << 16 | octets[2] << 8 | octets[3];
-        numericalAddresses.add(numericalAddress);
-      }
-
-      // Sort the numerical representations
-      numericalAddresses.sort();
-
-      // Convert back to IP addresses
-      return numericalAddresses.map((numericalAddress) {
-        int a = (numericalAddress >> 24) & 0xFF;
-        int b = (numericalAddress >> 16) & 0xFF;
-        int c = (numericalAddress >> 8) & 0xFF;
-        int d = numericalAddress & 0xFF;
-        return "$a.$b.$c.$d";
-      }).toList();
+    // Convert IP addresses to numerical representations
+    for (String ip in ipAddresses) {
+      List<int> octets = ip.split('.').map(int.parse).toList();
+      int numericalAddress =
+          octets[0] << 24 | octets[1] << 16 | octets[2] << 8 | octets[3];
+      numericalAddresses.add(numericalAddress);
     }
 
-    mutableList.sort((a, b) {
-      return a['vlandados'].compareTo(b['vlandados']);
-    });
+    // Sort the numerical representations
+    numericalAddresses.sort();
+
+    // Convert back to IP addresses
+    return numericalAddresses.map((numericalAddress) {
+      int a = (numericalAddress >> 24) & 0xFF;
+      int b = (numericalAddress >> 16) & 0xFF;
+      int c = (numericalAddress >> 8) & 0xFF;
+      int d = numericalAddress & 0xFF;
+      return "$a.$b.$c.$d";
+    }).toList();
+  }
+
+  List<String> orderedList = [];
+
+  void updateList(List<Map<String, dynamic>> newList) {
+    //create a mutable copy of proprios
+    mutableList = List<Map<String, dynamic>>.from(newList);
+
+    //initial list of ips
+    List<String> rd = [];
+
+    //traverse List<Map<String, dynamic>> proprios
+    for (var proprio in mutableList) {
+      String ip = proprio['rededados'];
+      if (ip.isNotEmpty) {
+        List<String> newip = ip.split('/');
+        rd.add(newip[0]);
+      }
+    }
+
+    orderedList = sortIPv4Addresses(rd);
   }
 }
 
@@ -59,8 +68,25 @@ class RedeDados extends StatelessWidget {
 
     return Scaffold(
       appBar: customAppBar(unidades),
-      body: Center(
-        child: Text('Rede de Dados'),
+      body: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 150,
+            childAspectRatio: 6 / 2,
+            crossAxisSpacing: 2,
+            mainAxisSpacing: 2),
+        itemCount: rcontroller.orderedList.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            color: Colors.greenAccent,
+            child: Center(
+              // tileColor: Colors.greenAccent,
+              child: Text(
+                rcontroller.orderedList[index],
+                style: TextStyle(fontSize: 11.0, fontWeight: FontWeight.bold),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

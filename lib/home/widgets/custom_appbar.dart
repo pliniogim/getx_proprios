@@ -35,7 +35,7 @@ customAppBar(List<Map<String, dynamic>> unidades) {
         padding: const EdgeInsets.only(right: 12.0),
         child: IconButton(
           icon: const Icon(Icons.compare_arrows_rounded),
-          tooltip: 'Data networks',
+          tooltip: 'Data use networks',
           onPressed: () async {
             await Future.delayed(const Duration(milliseconds: 500));
             Get.to(
