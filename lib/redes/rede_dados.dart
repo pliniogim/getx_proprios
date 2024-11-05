@@ -1,6 +1,7 @@
 // import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:proprios/detail/detail_page.dart';
 import 'package:proprios/home/widgets/custom_appbar.dart';
 
 class RedeDadosController extends GetxController {
@@ -76,13 +77,27 @@ class RedeDados extends StatelessWidget {
             mainAxisSpacing: 2),
         itemCount: rcontroller.orderedList.length,
         itemBuilder: (BuildContext context, int index) {
-          return Container(
-            color: Colors.greenAccent,
-            child: Center(
-              // tileColor: Colors.greenAccent,
-              child: Text(
-                rcontroller.orderedList[index],
-                style: TextStyle(fontSize: 11.0, fontWeight: FontWeight.bold),
+          return InkWell(
+            onTap: () {
+              final matchingIndex = unidades.indexWhere(
+                (item) =>
+                    item['rededados'].contains(rcontroller.orderedList[index]),
+              );
+              Get.to(
+                DetailPage(
+                  index: matchingIndex,
+                  unidades: unidades,
+                ),
+              );
+            },
+            child: Container(
+              color: Colors.greenAccent,
+              child: Center(
+                // tileColor: Colors.greenAccent,
+                child: Text(
+                  rcontroller.orderedList[index],
+                  style: TextStyle(fontSize: 11.0, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           );

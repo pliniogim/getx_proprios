@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:proprios/detail/detail_page.dart';
 
 import 'package:proprios/home/widgets/custom_appbar.dart';
 
@@ -37,6 +38,17 @@ class VlanPage extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
+              onTap: () {
+                final matchingIndex = unidades.indexWhere((item) =>
+                    item['descricao'] ==
+                    vcontroller.mutableList[index]['descricao']);
+                Get.to(
+                  DetailPage(
+                    index: matchingIndex,
+                    unidades: unidades,
+                  ),
+                );
+              },
               tileColor: Colors.greenAccent,
               title: Text(
                 'Vlan: ${vcontroller.mutableList[index]["vlandados"]}',
