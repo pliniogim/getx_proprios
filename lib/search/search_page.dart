@@ -61,6 +61,9 @@ class MyController extends GetxController {
           unidades['vlandados']
               .toLowerCase()
               .contains(searchText.value.toLowerCase()) ||
+          unidades['ipgerenciaswitch']
+              .toLowerCase()
+              .contains(searchText.value.toLowerCase()) ||
           unidades['olt']
               .toLowerCase()
               .contains(searchText.value.toLowerCase()))

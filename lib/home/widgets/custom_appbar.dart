@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proprios/redes/rede_dados.dart';
+import 'package:proprios/switches/switches_page.dart';
 import 'package:proprios/vlan/vlan_page.dart';
 
 customAppBar(List<Map<String, dynamic>> unidades) {
@@ -35,11 +36,26 @@ customAppBar(List<Map<String, dynamic>> unidades) {
         padding: const EdgeInsets.only(right: 12.0),
         child: IconButton(
           icon: const Icon(Icons.compare_arrows_rounded),
-          tooltip: 'Data use networks',
+          tooltip: 'Data network list page',
           onPressed: () async {
             await Future.delayed(const Duration(milliseconds: 500));
             Get.to(
               () => RedeDados(
+                unidades: unidades,
+              ),
+            );
+          },
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.only(right: 12.0),
+        child: IconButton(
+          icon: const Icon(Icons.switch_access_shortcut),
+          tooltip: 'Switches list page',
+          onPressed: () async {
+            await Future.delayed(const Duration(milliseconds: 500));
+            Get.to(
+              () => SwitchesPage(
                 unidades: unidades,
               ),
             );
