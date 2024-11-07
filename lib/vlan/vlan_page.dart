@@ -4,6 +4,7 @@ import 'package:proprios/detail/detail_page.dart';
 
 import 'package:proprios/home/widgets/custom_appbar.dart';
 import 'package:proprios/home/widgets/custom_drawer.dart';
+import 'package:proprios/search/search_page.dart';
 
 class VlanController extends GetxController {
   late List<Map<String, dynamic>> mutableList;
@@ -27,6 +28,7 @@ class VlanPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MyController mycontroller = Get.put(MyController());
     final vcontroller = Get.put(VlanController());
 
     vcontroller.updateList(unidades);

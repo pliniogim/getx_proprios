@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:proprios/detail/detail_page.dart';
 import 'package:proprios/home/widgets/custom_appbar.dart';
 import 'package:proprios/home/widgets/custom_drawer.dart';
+import 'package:proprios/search/search_page.dart';
 
 class SwitchesPageBinding extends Bindings {
   @override
@@ -82,6 +83,7 @@ class SwitchesPage extends GetView<SwitchesPageController> {
 
   @override
   Widget build(BuildContext context) {
+    final MyController mycontroller = Get.put(MyController());
     final scontroller = Get.put(SwitchesController());
     scontroller.updateList(unidades);
     return Scaffold(

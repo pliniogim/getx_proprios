@@ -2,6 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proprios/detail/detail_page.dart';
 import 'package:proprios/home/widgets/custom_appbar.dart';
+import 'package:proprios/home/widgets/custom_drawer.dart';
+import 'package:proprios/search/search_page.dart';
+
+class OnusPageBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.put(OnusController(), permanent: true);
+  }
+}
+
+class OnusPageController extends GetxController {
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+  }
+}
 
 class OnusController extends GetxController {
   late List<Map<String, dynamic>> mutableList;
@@ -62,7 +83,7 @@ class OnusController extends GetxController {
   }
 }
 
-class OnusPage extends StatelessWidget {
+class OnusPage extends GetView<OnusPageController> {
   final List<Map<String, dynamic>> unidades;
   const OnusPage({
     super.key,
@@ -71,9 +92,11 @@ class OnusPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MyController mycontroller = Get.put(MyController());
     final scontroller = Get.put(OnusController());
     scontroller.updateList(unidades);
     return Scaffold(
+      drawer: CustomDrawer(unidades: unidades),
       appBar: customAppBar(unidades),
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(

@@ -81,6 +81,7 @@ class SearchPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: TextField(
+          autofocus: true,
           onChanged: (value) => controller.searchText.value = value,
           decoration: InputDecoration(hintText: 'Pesquisar'),
         ),

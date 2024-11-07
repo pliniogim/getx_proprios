@@ -1,38 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:proprios/onus/onus_page.dart';
-import 'package:proprios/redes/rede_dados.dart';
-import 'package:proprios/switches/switches_page.dart';
-import 'package:proprios/vlan/vlan_page.dart';
+import 'package:proprios/search/search_page.dart';
+// import 'package:proprios/onus/onus_page.dart';
+// import 'package:proprios/redes/rede_dados.dart';
+// import 'package:proprios/switches/switches_page.dart';
+// import 'package:proprios/vlan/vlan_page.dart';
 
 customAppBar(List<Map<String, dynamic>> unidades) {
   return AppBar(
-    elevation: 10.0,
-    shadowColor: Colors.grey,
+    iconTheme: IconThemeData(color: Colors.white),
+    backgroundColor: Colors.green,
+    elevation: 15.0,
+    shadowColor: Colors.green,
     title: Text(
       'PRÓPRIOS - PMSCS (${unidades.length})',
       style: TextStyle(
         fontSize: 14.0,
         fontWeight: FontWeight.bold,
-        color: Color.fromRGBO(255, 103, 231, 1),
+        color: Colors.white,
       ),
     ),
-    // actions: <Widget>[
-    //   Padding(
-    //     padding: const EdgeInsets.only(right: 12.0),
-    //     child: IconButton(
-    //       icon: const Icon(Icons.alt_route),
-    //       tooltip: 'Vlan list page',
-    //       onPressed: () async {
-    //         await Future.delayed(const Duration(milliseconds: 500));
-    //         Get.to(
-    //           () => VlanPage(
-    //             unidades: unidades,
-    //           ),
-    //         );
-    //       },
-    //     ),
-    //   ),
+    actions: <Widget>[
+      Padding(
+        padding: const EdgeInsets.only(right: 12.0),
+        child: IconButton(
+          icon: const Icon(Icons.search),
+          tooltip: 'Search Page',
+          onPressed: () async {
+            await Future.delayed(const Duration(milliseconds: 500));
+            Get.to(
+              () => SearchPage(
+                unidades: unidades,
+              ),
+            );
+          },
+        ),
+      ),
+    ],
     //   Padding(
     //     padding: const EdgeInsets.only(right: 12.0),
     //     child: IconButton(

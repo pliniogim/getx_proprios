@@ -11,50 +11,109 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.blue,
+    return SizedBox(
+      width: 180,
+      child: Drawer(
+        elevation: 15.0,
+        shadowColor: Colors.greenAccent,
+        backgroundColor: Colors.green,
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.greenAccent.withOpacity(0.85),
+              ),
+              child: Text(
+                'PMSCS - Próprios',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.green[800],
+                ),
+              ),
             ),
-            child: Text('PMSCS'),
-          ),
-          ListTile(
-            title: Text('Home'),
-            tileColor: Get.currentRoute == '/home' ? Colors.grey[300] : null,
-            onTap: () {
-              Get.back();
-              Get.offAllNamed('/home');
-            },
-          ),
-          ListTile(
-            title: Text('Lista de Vlans'),
-            tileColor: Get.currentRoute == '/vlans' ? Colors.grey[300] : null,
-            onTap: () {
-              Get.back();
-              Get.offAllNamed('/vlans');
-            },
-          ),
-          ListTile(
-            title: Text('Lista de Redes'),
-            tileColor: Get.currentRoute == '/redes' ? Colors.grey[300] : null,
-            onTap: () {
-              Get.back();
-              Get.offAllNamed('/redes');
-            },
-          ),
-          ListTile(
-            title: Text('Lista de Switches'),
-            tileColor:
-                Get.currentRoute == '/switches' ? Colors.grey[300] : null,
-            onTap: () {
-              Get.back();
-              Get.toNamed('/switches');
-            },
-          ),
-        ],
+            ListTile(
+              title: Text(
+                'Home',
+                style: TextStyle(
+                  fontSize: 12.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              tileColor:
+                  Get.currentRoute == '/home' ? Colors.greenAccent : null,
+              onTap: () {
+                Get.back();
+                Get.offAllNamed('/home');
+              },
+            ),
+            ListTile(
+              title: Text(
+                'Lista de Vlans',
+                style: TextStyle(
+                  fontSize: 12.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              tileColor:
+                  Get.currentRoute == '/vlans' ? Colors.greenAccent : null,
+              onTap: () {
+                Get.back();
+                Get.offAllNamed('/vlans');
+              },
+            ),
+            ListTile(
+              title: Text(
+                'Lista de Redes',
+                style: TextStyle(
+                  fontSize: 12.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              tileColor:
+                  Get.currentRoute == '/redes' ? Colors.greenAccent : null,
+              onTap: () {
+                Get.back();
+                Get.offAllNamed('/redes');
+              },
+            ),
+            ListTile(
+              title: Text(
+                'Lista de Switches',
+                style: TextStyle(
+                  fontSize: 12.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              tileColor:
+                  Get.currentRoute == '/switches' ? Colors.greenAccent : null,
+              onTap: () {
+                Get.back();
+                Get.toNamed('/switches');
+              },
+            ),
+            ListTile(
+              title: Text(
+                'Lista de Onus',
+                style: TextStyle(
+                  fontSize: 12.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              tileColor:
+                  Get.currentRoute == '/onus' ? Colors.greenAccent : null,
+              onTap: () {
+                Get.back();
+                Get.toNamed('/onus');
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

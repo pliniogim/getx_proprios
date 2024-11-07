@@ -5,6 +5,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proprios/home/home_page.dart';
+import 'package:proprios/onus/onus_page.dart';
 import 'package:proprios/redes/rede_dados.dart';
 import 'package:proprios/switches/switches_page.dart';
 import 'package:proprios/vlan/vlan_page.dart';
@@ -75,6 +76,11 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/switches',
           page: () => SwitchesPage(unidades: unidades),
+          // binding: HomeBinding(),
+        ),
+        GetPage(
+          name: '/onus',
+          page: () => OnusPage(unidades: unidades),
           // binding: HomeBinding(),
         ),
       ],

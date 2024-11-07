@@ -86,21 +86,24 @@ class HomePage extends GetView<HomePageController> {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        tooltip: 'Search...',
-        onPressed: () async {
-          await Future.delayed(const Duration(milliseconds: 500));
-          Get.to(
-            () => SearchPage(
-              unidades: unidades,
-            ),
-          );
-          // Get.to(SearchPage());
-        },
-        child: Icon(
-          Icons.search,
-        ),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: Colors.lightGreenAccent,
+      //   tooltip: 'Search...',
+      //   onPressed: () async {
+      //     await Future.delayed(const Duration(milliseconds: 500));
+      //     Get.to(
+      //       () => SearchPage(
+      //         unidades: unidades,
+      //       ),
+      //     );
+      //     // Get.to(SearchPage());
+      //   },
+      //   child: Icon(
+      //     Icons.search,
+      //     color: Colors.green,
+      //   ),
+      // ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:proprios/detail/detail_page.dart';
 import 'package:proprios/home/widgets/custom_appbar.dart';
 import 'package:proprios/home/widgets/custom_drawer.dart';
+import 'package:proprios/search/search_page.dart';
 
 class RedeDadosController extends GetxController {
   late List<Map<String, dynamic>> mutableList;
@@ -65,6 +66,7 @@ class RedeDados extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MyController mycontroller = Get.put(MyController());
     final rcontroller = Get.put(RedeDadosController());
     rcontroller.updateList(unidades);
 
