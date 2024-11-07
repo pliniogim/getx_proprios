@@ -2,6 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proprios/detail/detail_page.dart';
 import 'package:proprios/home/widgets/custom_appbar.dart';
+import 'package:proprios/home/widgets/custom_drawer.dart';
+
+class SwitchesPageBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.put(SwitchesPageController(), permanent: true);
+  }
+}
+
+class SwitchesPageController extends GetxController {
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+  }
+}
 
 class SwitchesController extends GetxController {
   late List<Map<String, dynamic>> mutableList;
@@ -53,7 +73,7 @@ class SwitchesController extends GetxController {
   }
 }
 
-class SwitchesPage extends StatelessWidget {
+class SwitchesPage extends GetView<SwitchesPageController> {
   final List<Map<String, dynamic>> unidades;
   const SwitchesPage({
     super.key,
@@ -65,6 +85,7 @@ class SwitchesPage extends StatelessWidget {
     final scontroller = Get.put(SwitchesController());
     scontroller.updateList(unidades);
     return Scaffold(
+      drawer: CustomDrawer(unidades: unidades),
       appBar: customAppBar(unidades),
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(

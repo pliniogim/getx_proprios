@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:proprios/detail/detail_page.dart';
 
 import 'package:proprios/home/widgets/custom_appbar.dart';
+import 'package:proprios/home/widgets/custom_drawer.dart';
 
 class VlanController extends GetxController {
   late List<Map<String, dynamic>> mutableList;
@@ -31,6 +32,7 @@ class VlanPage extends StatelessWidget {
     vcontroller.updateList(unidades);
 
     return Scaffold(
+      drawer: CustomDrawer(unidades: unidades),
       appBar: customAppBar(unidades),
       body: ListView.builder(
         itemCount: vcontroller.mutableList.length,

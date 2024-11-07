@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proprios/detail/detail_page.dart';
 import 'package:proprios/home/widgets/custom_appbar.dart';
+import 'package:proprios/home/widgets/custom_drawer.dart';
 
 class RedeDadosController extends GetxController {
   late List<Map<String, dynamic>> mutableList;
@@ -68,6 +69,7 @@ class RedeDados extends StatelessWidget {
     rcontroller.updateList(unidades);
 
     return Scaffold(
+      drawer: CustomDrawer(unidades: unidades),
       appBar: customAppBar(unidades),
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(

@@ -5,6 +5,9 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proprios/home/home_page.dart';
+import 'package:proprios/redes/rede_dados.dart';
+import 'package:proprios/switches/switches_page.dart';
+import 'package:proprios/vlan/vlan_page.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 
@@ -51,13 +54,37 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //use of Get
     return GetMaterialApp(
+      navigatorKey: Get.key,
+      initialRoute: '/home',
+      getPages: [
+        GetPage(
+          name: '/home',
+          page: () => HomePage(unidades: unidades),
+          // binding: HomeBinding(),
+        ),
+        GetPage(
+          name: '/vlans',
+          page: () => VlanPage(unidades: unidades),
+          // binding: HomeBinding(),
+        ),
+        GetPage(
+          name: '/redes',
+          page: () => RedeDados(unidades: unidades),
+          // binding: HomeBinding(),
+        ),
+        GetPage(
+          name: '/switches',
+          page: () => SwitchesPage(unidades: unidades),
+          // binding: HomeBinding(),
+        ),
+      ],
       debugShowCheckedModeBanner: false,
       title: 'Próprios',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent),
         useMaterial3: true,
       ),
-      home: HomePage(unidades: unidades),
+      // home: HomePage(unidades: unidades),
     );
   }
 }

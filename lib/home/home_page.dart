@@ -2,11 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proprios/detail/detail_page.dart';
 import 'package:proprios/home/widgets/custom_appbar.dart';
+import 'package:proprios/home/widgets/custom_drawer.dart';
 import 'package:proprios/search/search_page.dart';
 import 'package:proprios/vlan/vlan_page.dart';
 
-class HomePage extends StatelessWidget {
-  final MyController controller = Get.put(MyController());
+class HomePageBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.put(HomePageController(), permanent: true);
+  }
+}
+
+class HomePageController extends GetxController {
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+  }
+}
+
+class HomePage extends GetView<HomePageController> {
+  final MyController mycontroller = Get.put(MyController());
   final vcontroller = Get.put(VlanController());
 
   final List<Map<String, dynamic>> unidades;
@@ -15,6 +35,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: CustomDrawer(unidades: unidades),
       appBar: customAppBar(unidades),
       body: ListView.builder(
         itemCount: unidades.length,

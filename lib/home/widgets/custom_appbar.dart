@@ -17,67 +17,67 @@ customAppBar(List<Map<String, dynamic>> unidades) {
         color: Color.fromRGBO(255, 103, 231, 1),
       ),
     ),
-    actions: <Widget>[
-      Padding(
-        padding: const EdgeInsets.only(right: 12.0),
-        child: IconButton(
-          icon: const Icon(Icons.alt_route),
-          tooltip: 'Vlan list page',
-          onPressed: () async {
-            await Future.delayed(const Duration(milliseconds: 500));
-            Get.to(
-              () => VlanPage(
-                unidades: unidades,
-              ),
-            );
-          },
-        ),
-      ),
-      Padding(
-        padding: const EdgeInsets.only(right: 12.0),
-        child: IconButton(
-          icon: const Icon(Icons.compare_arrows_rounded),
-          tooltip: 'Data network list page',
-          onPressed: () async {
-            await Future.delayed(const Duration(milliseconds: 500));
-            Get.to(
-              () => RedeDados(
-                unidades: unidades,
-              ),
-            );
-          },
-        ),
-      ),
-      Padding(
-        padding: const EdgeInsets.only(right: 12.0),
-        child: IconButton(
-          icon: const Icon(Icons.router_outlined),
-          tooltip: 'Switches list page',
-          onPressed: () async {
-            await Future.delayed(const Duration(milliseconds: 500));
-            Get.to(
-              () => SwitchesPage(
-                unidades: unidades,
-              ),
-            );
-          },
-        ),
-      ),
-      Padding(
-        padding: const EdgeInsets.only(right: 12.0),
-        child: IconButton(
-          icon: const Icon(Icons.switch_access_shortcut),
-          tooltip: 'Onus list page',
-          onPressed: () async {
-            await Future.delayed(const Duration(milliseconds: 500));
-            Get.to(
-              () => OnusPage(
-                unidades: unidades,
-              ),
-            );
-          },
-        ),
-      ),
-    ],
+    // actions: <Widget>[
+    //   Padding(
+    //     padding: const EdgeInsets.only(right: 12.0),
+    //     child: IconButton(
+    //       icon: const Icon(Icons.alt_route),
+    //       tooltip: 'Vlan list page',
+    //       onPressed: () async {
+    //         await Future.delayed(const Duration(milliseconds: 500));
+    //         Get.to(
+    //           () => VlanPage(
+    //             unidades: unidades,
+    //           ),
+    //         );
+    //       },
+    //     ),
+    //   ),
+    //   Padding(
+    //     padding: const EdgeInsets.only(right: 12.0),
+    //     child: IconButton(
+    //       icon: const Icon(Icons.compare_arrows_rounded),
+    //       tooltip: 'Data network list page',
+    //       onPressed: () async {
+    //         await Future.delayed(const Duration(milliseconds: 500));
+    //         Get.to(
+    //           () => RedeDados(
+    //             unidades: unidades,
+    //           ),
+    //         );
+    //       },
+    //     ),
+    //   ),
+    //   Padding(
+    //     padding: const EdgeInsets.only(right: 12.0),
+    //     child: IconButton(
+    //       icon: const Icon(Icons.router_outlined),
+    //       tooltip: 'Switches list page',
+    //       onPressed: () async {
+    //         await Future.delayed(const Duration(milliseconds: 500));
+    //         Get.to(
+    //           () => SwitchesPage(
+    //             unidades: unidades,
+    //           ),
+    //         );
+    //       },
+    //     ),
+    //   ),
+    //   Padding(
+    //     padding: const EdgeInsets.only(right: 12.0),
+    //     child: IconButton(
+    //       icon: const Icon(Icons.switch_access_shortcut),
+    //       tooltip: 'Onus list page',
+    //       onPressed: () async {
+    //         await Future.delayed(const Duration(milliseconds: 500));
+    //         Get.to(
+    //           () => OnusPage(
+    //             unidades: unidades,
+    //           ),
+    //         );
+    //       },
+    //     ),
+    //   ),
+    // ],
   );
 }
