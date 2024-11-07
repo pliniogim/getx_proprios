@@ -25,7 +25,7 @@ class CustomDrawer extends StatelessWidget {
                 color: Colors.greenAccent.withOpacity(0.85),
               ),
               child: Text(
-                'PMSCS - Próprios',
+                'PRÓPRIOS - PMSCS',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.green[800],
@@ -38,7 +38,7 @@ class CustomDrawer extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 12.0,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               tileColor:
@@ -54,7 +54,7 @@ class CustomDrawer extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 12.0,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               tileColor:
@@ -70,7 +70,7 @@ class CustomDrawer extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 12.0,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               tileColor:
@@ -86,7 +86,7 @@ class CustomDrawer extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 12.0,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               tileColor:
@@ -102,7 +102,7 @@ class CustomDrawer extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 12.0,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               tileColor:
