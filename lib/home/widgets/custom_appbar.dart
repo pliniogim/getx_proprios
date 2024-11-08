@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proprios/search/search_page.dart';
-// import 'package:proprios/onus/onus_page.dart';
-// import 'package:proprios/redes/rede_dados.dart';
-// import 'package:proprios/switches/switches_page.dart';
-// import 'package:proprios/vlan/vlan_page.dart';
 
 customAppBar(List<Map<String, dynamic>> unidades) {
   return AppBar(

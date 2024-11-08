@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:proprios/detail/detail_page.dart';
 import 'package:proprios/home/widgets/custom_appbar.dart';
 import 'package:proprios/home/widgets/custom_drawer.dart';
 import 'package:proprios/search/search_page.dart';

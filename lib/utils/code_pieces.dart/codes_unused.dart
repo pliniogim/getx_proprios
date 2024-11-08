@@ -65,3 +65,50 @@
     //     ),
     //   ),
     // ],
+
+
+    // ///
+// Future<Database> initDB() async {
+//     if (Platform.isWindows || Platform.isLinux) {
+//       sqfliteFfiInit();
+//       final databaseFactory = databaseFactoryFfi;
+//       final appDocumentsDir = await getApplicationDocumentsDirectory();
+//       final dbPath = join(appDocumentsDir.path, "databases", "data.db");
+//       final winLinuxDB = await databaseFactory.openDatabase(
+//         dbPath,
+//         options: OpenDatabaseOptions(
+//           version: 1,
+//           onCreate: _onCreate,
+//         ),
+//       );
+//       return winLinuxDB;
+//     } else if (Platform.isAndroid || Platform.isIOS) {
+//       final documentsDirectory = await getApplicationDocumentsDirectory();
+//       final path = join(documentsDirectory.path, "data.db");
+//       final iOSAndroidDB = await openDatabase(
+//         path,
+//         version: 1,
+//         onCreate: _onCreate,
+//       );
+//       return iOSAndroidDB;
+//     }
+//     throw Exception("Unsupported platform");
+//   }
+// ///
+
+
+//directory search (user documents)
+  // flutterfinal Directory appDocumentsDir = await getApplicationDocumentsDirectory();
+
+  //join databases & database file name
+  // String dbPath = p.join(appDocumentsDir.path, "databases", "proprios.db");
+
+  // //open database
+  // var db = await databaseFactory.openDatabase(
+  //   dbPath,
+  // );
+  //
+  //select * from proprios
+  //var result = await db.query('proprios', orderBy: "descricao ASC");
+  //close db
+  //Test Area
