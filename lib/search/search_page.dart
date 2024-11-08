@@ -2,9 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:path/path.dart' as p;
-import 'package:path_provider/path_provider.dart';
+// import 'package:path/path.dart' as p;
+// import 'package:path_provider/path_provider.dart';
 import 'package:proprios/detail/detail_page.dart';
+import 'package:proprios/utils/database/dbclass.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 // import 'package:proprios/home/widgets/custom_appbar.dart';
@@ -20,25 +21,32 @@ class MyController extends GetxController {
       sqfliteFfiInit();
     }
 
-    //factory class
     databaseFactory = databaseFactoryFfi;
-
-    //directory search (user documents)
-    final Directory appDocumentsDir = await getApplicationDocumentsDirectory();
-
-    //join databases & database file name
-    String dbPath = p.join(appDocumentsDir.path, "databases", "proprios.db");
-
-    //open database
-    var db = await databaseFactory.openDatabase(
-      dbPath,
-    );
-
-    //select * from proprios
+    var db = await databaseFactory.openDatabase(inMemoryDatabasePath);
+    await db.execute(kSqlCreate);
+    await db.execute(kSqlData);
     _unidadesFuture = db.query('proprios', orderBy: "descricao ASC");
-
-    //close db
     await db.close();
+
+    // //factory class
+    // databaseFactory = databaseFactoryFfi;
+
+    // //directory search (user documents)
+    // final Directory appDocumentsDir = await getApplicationDocumentsDirectory();
+
+    // //join databases & database file name
+    // String dbPath = p.join(appDocumentsDir.path, "databases", "proprios.db");
+
+    // //open database
+    // var db = await databaseFactory.openDatabase(
+    //   dbPath,
+    // );
+
+    // //select * from proprios
+    // _unidadesFuture = db.query('proprios', orderBy: "descricao ASC");
+
+    // //close db
+    // await db.close();
 
     super.onInit();
   }
@@ -61,6 +69,9 @@ class MyController extends GetxController {
           unidades['vlandados']
               .toLowerCase()
               .contains(searchText.value.toLowerCase()) ||
+          unidades['ipgerenciaswitch']
+              .toLowerCase()
+              .contains(searchText.value.toLowerCase()) ||
           unidades['olt']
               .toLowerCase()
               .contains(searchText.value.toLowerCase()))
@@ -78,6 +89,7 @@ class SearchPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: TextField(
+          autofocus: true,
           onChanged: (value) => controller.searchText.value = value,
           decoration: InputDecoration(hintText: 'Pesquisar'),
         ),

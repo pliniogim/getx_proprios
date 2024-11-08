@@ -1,3 +1,6 @@
+#local
+lib/utils/database/dbclass.dart
+
 # Miscellaneous
 *.class
 *.log
