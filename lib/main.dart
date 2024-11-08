@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
+import 'package:sqflite_common/sqlite_api.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,36 @@ import 'package:proprios/switches/switches_page.dart';
 import 'package:proprios/vlan/vlan_page.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
+import 'package:proprios/utils/database/dbclass.dart';
+// ///
+// Future<Database> initDB() async {
+//     if (Platform.isWindows || Platform.isLinux) {
+//       sqfliteFfiInit();
+//       final databaseFactory = databaseFactoryFfi;
+//       final appDocumentsDir = await getApplicationDocumentsDirectory();
+//       final dbPath = join(appDocumentsDir.path, "databases", "data.db");
+//       final winLinuxDB = await databaseFactory.openDatabase(
+//         dbPath,
+//         options: OpenDatabaseOptions(
+//           version: 1,
+//           onCreate: _onCreate,
+//         ),
+//       );
+//       return winLinuxDB;
+//     } else if (Platform.isAndroid || Platform.isIOS) {
+//       final documentsDirectory = await getApplicationDocumentsDirectory();
+//       final path = join(documentsDirectory.path, "data.db");
+//       final iOSAndroidDB = await openDatabase(
+//         path,
+//         version: 1,
+//         onCreate: _onCreate,
+//       );
+//       return iOSAndroidDB;
+//     }
+//     throw Exception("Unsupported platform");
+//   }
+
+// ///
 
 Future main() async {
   appWindow.size = const Size(400, 800);
@@ -34,6 +65,16 @@ Future main() async {
   var db = await databaseFactory.openDatabase(
     dbPath,
   );
+
+  //Test Area
+  var db2 = await databaseFactory.openDatabase(inMemoryDatabasePath);
+  await db2.execute(kSqlCreate);
+
+  await db2.execute(kSqlData);
+  var result2 = await db2.query('proprios2');
+  print(result2);
+  await db2.close();
+  //
 
   //select * from proprios
   var result = await db.query('proprios', orderBy: "descricao ASC");
