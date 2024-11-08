@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'package:path/path.dart' as p;
-import 'package:path_provider/path_provider.dart';
-import 'package:sqflite_common/sqlite_api.dart';
+// import 'package:path/path.dart' as p;
+// import 'package:path_provider/path_provider.dart';
+// import 'package:sqflite_common/sqlite_api.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,6 +13,7 @@ import 'package:proprios/vlan/vlan_page.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:proprios/utils/database/dbclass.dart';
+
 // ///
 // Future<Database> initDB() async {
 //     if (Platform.isWindows || Platform.isLinux) {
@@ -40,46 +41,38 @@ import 'package:proprios/utils/database/dbclass.dart';
 //     }
 //     throw Exception("Unsupported platform");
 //   }
-
 // ///
 
 Future main() async {
-  appWindow.size = const Size(400, 800);
-
   //platform check, for android use sqlite on system
   if (Platform.isWindows || Platform.isLinux) {
     // Initialize FFI
+    appWindow.size = const Size(400, 800);
     sqfliteFfiInit();
   }
 
-  //factory class
-  databaseFactory = databaseFactoryFfi;
-
   //directory search (user documents)
-  final Directory appDocumentsDir = await getApplicationDocumentsDirectory();
+  // flutterfinal Directory appDocumentsDir = await getApplicationDocumentsDirectory();
 
   //join databases & database file name
-  String dbPath = p.join(appDocumentsDir.path, "databases", "proprios.db");
+  // String dbPath = p.join(appDocumentsDir.path, "databases", "proprios.db");
 
-  //open database
-  var db = await databaseFactory.openDatabase(
-    dbPath,
-  );
-
-  //Test Area
-  var db2 = await databaseFactory.openDatabase(inMemoryDatabasePath);
-  await db2.execute(kSqlCreate);
-
-  await db2.execute(kSqlData);
-  var result2 = await db2.query('proprios2');
-  print(result2);
-  await db2.close();
+  // //open database
+  // var db = await databaseFactory.openDatabase(
+  //   dbPath,
+  // );
   //
-
   //select * from proprios
-  var result = await db.query('proprios', orderBy: "descricao ASC");
-
+  //var result = await db.query('proprios', orderBy: "descricao ASC");
   //close db
+  //Test Area
+
+  // factory class
+  databaseFactory = databaseFactoryFfi;
+  var db = await databaseFactory.openDatabase(inMemoryDatabasePath);
+  await db.execute(kSqlCreate);
+  await db.execute(kSqlData);
+  var result = await db.query('proprios', orderBy: "descricao ASC");
   await db.close();
 
   //run app passing result databaseq

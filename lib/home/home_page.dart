@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:proprios/detail/detail_page.dart';
 import 'package:proprios/home/widgets/custom_appbar.dart';
 import 'package:proprios/home/widgets/custom_drawer.dart';
+import 'package:proprios/home/widgets/custom_inkwell.dart';
 import 'package:proprios/search/search_page.dart';
-import 'package:proprios/vlan/vlan_page.dart';
+import 'package:proprios/vlan/controller/vlan_controller.dart';
 
 class HomePageBinding extends Bindings {
   @override
@@ -16,16 +16,19 @@ class HomePageBinding extends Bindings {
 class HomePageController extends GetxController {
   @override
   void onInit() {
+    debugPrint('on Init');
     super.onInit();
   }
 
   @override
   void onReady() {
+    debugPrint('on Ready');
     super.onReady();
   }
 }
 
 class HomePage extends GetView<HomePageController> {
+  //initialize MyController/vcontroller ahead of use
   final MyController mycontroller = Get.put(MyController());
   final vcontroller = Get.put(VlanController());
 
@@ -40,70 +43,9 @@ class HomePage extends GetView<HomePageController> {
       body: ListView.builder(
         itemCount: unidades.length,
         itemBuilder: (BuildContext context, int index) {
-          return InkWell(
-            onTap: () {
-              Get.to(
-                DetailPage(
-                  index: index,
-                  unidades: unidades,
-                ),
-              );
-            },
-            child: Card(
-              margin: EdgeInsets.only(
-                left: 20.0,
-                right: 20.0,
-                bottom: 10.0,
-              ),
-              color: Colors.greenAccent,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Row(
-                      children: [
-                        CircleAvatar(
-                          child: Text(
-                            unidades[index]['unidade'],
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 13.0),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10.0,
-                        ),
-                        Expanded(
-                          child: Text(
-                            unidades[index]['descricao'],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
+          return HomePageInkwell(unidades: unidades, index: index);
         },
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   backgroundColor: Colors.lightGreenAccent,
-      //   tooltip: 'Search...',
-      //   onPressed: () async {
-      //     await Future.delayed(const Duration(milliseconds: 500));
-      //     Get.to(
-      //       () => SearchPage(
-      //         unidades: unidades,
-      //       ),
-      //     );
-      //     // Get.to(SearchPage());
-      //   },
-      //   child: Icon(
-      //     Icons.search,
-      //     color: Colors.green,
-      //   ),
-      // ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
