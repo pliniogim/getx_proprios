@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proprios/home/home_page.dart';
+import 'package:proprios/login/login_page.dart';
 import 'package:proprios/onus/onus_page.dart';
 import 'package:proprios/redes/rede_dados.dart';
 import 'package:proprios/switches/switches_page.dart';
@@ -21,28 +22,45 @@ Future main() async {
 
   // factory class
   databaseFactory = databaseFactoryFfi;
+  // database in memory
   var db = await databaseFactory.openDatabase(inMemoryDatabasePath);
+
+  // create proprios database
   await db.execute(kSqlCreate);
+  // insert data on proprios
   await db.execute(kSqlData);
+  // query proprios to map
   var result = await db.query('proprios', orderBy: "descricao ASC");
+
+  // create users database
+  await db.execute(kSqlUserCreate);
+  // create users data
+  await db.execute(kSqlUserData);
+  // query users to map
+  var users = await db.query('users', orderBy: "email ASC");
+
+  // close database
   await db.close();
 
   //run app passing result databaseq
   runApp(MyApp(
     unidades: result,
+    users: users,
   ));
 }
 
 class MyApp extends StatelessWidget {
   final List<Map<String, dynamic>> unidades;
-  const MyApp({required this.unidades, super.key});
+  final List<Map<String, dynamic>> users;
+
+  const MyApp({required this.unidades, required this.users, super.key});
 
   @override
   Widget build(BuildContext context) {
     //use of Get
     return GetMaterialApp(
       navigatorKey: Get.key,
-      initialRoute: '/home',
+      initialRoute: '/login',
       getPages: [
         GetPage(
           name: '/home',
@@ -67,6 +85,11 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/onus',
           page: () => OnusPage(unidades: unidades),
+          // binding: HomeBinding(),
+        ),
+        GetPage(
+          name: '/login',
+          page: () => LoginPage(users: users),
           // binding: HomeBinding(),
         ),
       ],
