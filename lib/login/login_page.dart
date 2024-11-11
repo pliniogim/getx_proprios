@@ -36,16 +36,20 @@ class InfoController extends GetxController {
           mutableList.indexWhere((item) => item['email'] == email.value);
       if (matchingIndex != -1) {
         if (mutableList[matchingIndex]['password'] == password.value) {
-          Get.snackbar("Success", "Data is valid");
+          Get.snackbar("Success", "Data is valid",
+              snackPosition: SnackPosition.BOTTOM);
           Get.offAllNamed('/home');
         } else {
-          Get.snackbar("Error", "Email or password invalid");
+          Get.snackbar("Error", "Email or password invalid",
+              snackPosition: SnackPosition.BOTTOM);
         }
       } else {
-        Get.snackbar("Error", "Email or password invalid");
+        Get.snackbar("Error", "Email or password invalid",
+            snackPosition: SnackPosition.BOTTOM);
       }
     } else {
-      Get.snackbar("Error", "Please provide valid information");
+      Get.snackbar("Error", "Please provide valid information",
+          snackPosition: SnackPosition.BOTTOM);
     }
   }
 }
@@ -79,11 +83,17 @@ class LoginPage extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: Colors.greenAccent.withOpacity(0.5),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(30.0),
-                bottomRight: Radius.circular(30.0),
+              image: DecorationImage(
+                image: AssetImage(
+                    'assets/images/Gemini_Generated_Image_o8c8z7o8c8z7o8c8.jpg'),
+                // opacity: 0.5,
+                fit: BoxFit.cover, // This will fill the container
               ),
+              color: Colors.greenAccent.withOpacity(0.5),
+              // borderRadius: BorderRadius.only(
+              //   bottomLeft: Radius.circular(30.0),
+              //   bottomRight: Radius.circular(30.0),
+              // ),
             ),
             height: 200,
           ),
