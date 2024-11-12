@@ -6,7 +6,7 @@ Widget customContainter(String text, String data) {
       color: Colors.greenAccent,
       borderRadius: BorderRadius.circular(10.0),
     ),
-    height: 60.0,
+    height: 120.0,
     child: Padding(
       padding: const EdgeInsets.only(
         top: 5.0,
