@@ -84,6 +84,24 @@ class DetailPage extends StatelessWidget {
                     tooltip: "ping",
                     color: Colors.purple,
                   ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text("Rede"),
+                  IconButton(
+                    onPressed: () {
+                      var unit = unidades[index]["rededados"];
+                      Process.run('cmd', [
+                        '/c',
+                        'start c:\\ais\\advanced_ip_scanner_console.exe',
+                        '/r:$unit'
+                      ]);
+                      unit = '';
+                    },
+                    icon: Icon(Icons.computer),
+                    tooltip: "Rede",
+                    color: Colors.purple,
+                  ),
                 ],
               ),
             )
