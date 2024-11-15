@@ -24,6 +24,7 @@ Widget customContainter(String text, String data) {
             width: 10.0,
           ),
           Expanded(
+            // TODO check platform not to scale text on Android
             child: Text(
               data,
               textScaler: TextScaler.linear(0.9),
