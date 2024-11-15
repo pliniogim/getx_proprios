@@ -15,8 +15,11 @@ import 'package:proprios/utils/database/dbclass.dart';
 Future main() async {
   //platform check, for android use sqlite on system
   if (Platform.isWindows || Platform.isLinux) {
+    WidgetsFlutterBinding.ensureInitialized();
+
+    appWindow.size = const Size(550, 900);
+
     // Initialize FFI
-    appWindow.size = const Size(400, 800);
     sqfliteFfiInit();
   }
 

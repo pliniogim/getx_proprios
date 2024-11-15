@@ -12,7 +12,7 @@ customListView(List<Map<String, dynamic>> unidades, int index) {
         height: 10,
       ),
       customContainter(
-        "Nome: ",
+        "",
         unidades[index]['descricao'],
       ),
       SizedBox(
@@ -61,14 +61,14 @@ customListView(List<Map<String, dynamic>> unidades, int index) {
         height: 10,
       ),
       customContainter(
-        "Gerência Switches: ",
+        "Switches: ",
         unidades[index]['ipgerenciaswitch'],
       ),
       SizedBox(
         height: 10,
       ),
       customContainter(
-        "Gerência ONU: ",
+        "ONU's: ",
         unidades[index]['ipgerenciaonu'],
       ),
       SizedBox(

@@ -40,11 +40,18 @@ class HomePage extends GetView<HomePageController> {
     return Scaffold(
       drawer: CustomDrawer(unidades: unidades),
       appBar: customAppBar(unidades),
-      body: ListView.builder(
-        itemCount: unidades.length,
-        itemBuilder: (BuildContext context, int index) {
-          return HomePageInkwell(unidades: unidades, index: index);
-        },
+      body: Padding(
+        padding: EdgeInsets.only(
+          top: MediaQuery.of(context).size.height / 70,
+          left: 5.0,
+          right: 5.0,
+        ),
+        child: ListView.builder(
+          itemCount: unidades.length,
+          itemBuilder: (BuildContext context, int index) {
+            return HomePageInkwell(unidades: unidades, index: index);
+          },
+        ),
       ),
     );
   }

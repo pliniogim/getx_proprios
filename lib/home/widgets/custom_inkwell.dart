@@ -26,8 +26,8 @@ class HomePageInkwell extends StatelessWidget {
       },
       child: Card(
         margin: EdgeInsets.only(
-          left: 20.0,
-          right: 20.0,
+          left: 5.0,
+          right: 5.0,
           bottom: 10.0,
         ),
         color: Colors.greenAccent,

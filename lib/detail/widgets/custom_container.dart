@@ -6,13 +6,13 @@ Widget customContainter(String text, String data) {
       color: Colors.greenAccent,
       borderRadius: BorderRadius.circular(10.0),
     ),
-    height: 120.0,
+    height: (text == "Switches: " && data.contains('/')) ? 75.0 : 60.0,
     child: Padding(
       padding: const EdgeInsets.only(
-        top: 5.0,
-        bottom: 5.0,
-        left: 5.0,
-        right: 5.0,
+        top: 2.0,
+        bottom: 2.0,
+        left: 2.0,
+        right: 2.0,
       ),
       child: Row(
         children: [
@@ -24,7 +24,10 @@ Widget customContainter(String text, String data) {
             width: 10.0,
           ),
           Expanded(
-            child: Text(data),
+            child: Text(
+              data,
+              textScaler: TextScaler.linear(0.9),
+            ),
           ),
         ],
       ),
