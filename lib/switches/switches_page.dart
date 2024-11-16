@@ -1,31 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:proprios/controller/ip_generic_controller.dart';
+
 import 'package:proprios/home/widgets/custom_appbar.dart';
 import 'package:proprios/home/widgets/custom_drawer.dart';
 import 'package:proprios/search/search_page.dart';
-import 'package:proprios/switches/controller/switches_controller.dart';
+import 'package:proprios/switches/controller/switches_page_controller.dart';
 import 'package:proprios/switches/widgets/custom_inkwell.dart';
-
-class SwitchesPageBinding extends Bindings {
-  @override
-  void dependencies() {
-    Get.put(SwitchesPageController(), permanent: true);
-  }
-}
-
-class SwitchesPageController extends GetxController {
-  @override
-  void onInit() {
-    debugPrint('on Init');
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    debugPrint('on Ready');
-    super.onReady();
-  }
-}
 
 class SwitchesPage extends GetView<SwitchesPageController> {
   final List<Map<String, dynamic>> unidades;
@@ -40,8 +21,8 @@ class SwitchesPage extends GetView<SwitchesPageController> {
     // ignore: unused_local_variable
     final MyController mycontroller = Get.put(MyController());
 
-    final scontroller = Get.put(SwitchesController());
-    scontroller.updateList(unidades);
+    final scontroller = Get.put(IpGenericController());
+    scontroller.updateList(unidades, "switch");
 
     return Scaffold(
       drawer: CustomDrawer(unidades: unidades),
@@ -55,7 +36,10 @@ class SwitchesPage extends GetView<SwitchesPageController> {
         itemCount: scontroller.orderedList.length,
         itemBuilder: (BuildContext context, int index) {
           return CustomInkwell(
-              unidades: unidades, index: index, scontroller: scontroller);
+            unidades: unidades,
+            index: index,
+            scontroller: scontroller,
+          );
         },
       ),
     );

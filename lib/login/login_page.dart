@@ -36,7 +36,7 @@ class LoginPage extends StatelessWidget {
       bottomSheet: Container(
         height: 50,
         decoration: BoxDecoration(
-          color: Colors.greenAccent.withOpacity(0.5),
+          color: kSecondaryOpac,
         ),
         child: Center(
           child: Text(

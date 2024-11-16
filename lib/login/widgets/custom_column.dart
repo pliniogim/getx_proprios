@@ -1,8 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:proprios/login/controller/info_controller.dart';
+import 'package:proprios/utils/constants/constants.dart';
 
 class CustomColumn extends StatelessWidget {
   const CustomColumn({
@@ -11,7 +11,9 @@ class CustomColumn extends StatelessWidget {
     required this.users,
   });
 
+  // user controller
   final InfoController infocontroller;
+  // list of users
   final List<Map<String, dynamic>> users;
 
   @override
@@ -20,14 +22,12 @@ class CustomColumn extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                  'assets/images/Gemini_Generated_Image_o8c8z7o8c8z7o8c8.jpg'),
-              fit: BoxFit.cover, // This will fill the container
-            ),
-            color: Colors.greenAccent.withOpacity(0.5),
-          ),
-          height: 200,
+              image: DecorationImage(
+                image: AssetImage(kAssetImage),
+                fit: BoxFit.cover, // This will fill the container
+              ),
+              color: kSecondaryOpac),
+          height: kAssetImageHeight,
         ),
         SizedBox(
           height: 20.0,
@@ -37,10 +37,12 @@ class CustomColumn extends StatelessWidget {
           child: Obx(
             () => TextField(
               decoration: InputDecoration(
-                labelText: 'Email',
+                labelText: kEmail,
                 errorText:
+                    // validate email
                     infocontroller.validateEmail(infocontroller.email.value),
               ),
+              // textfield controller
               controller: infocontroller.emailController,
               onChanged: (value) => infocontroller.email.value = value,
             ),
@@ -53,10 +55,11 @@ class CustomColumn extends StatelessWidget {
           padding: const EdgeInsets.all(20.0),
           child: Obx(
             () => TextField(
+              // textfield controller
               controller: infocontroller.passwordController,
               onChanged: (value) => infocontroller.password.value = value,
               decoration: InputDecoration(
-                labelText: 'Password',
+                labelText: kPassword,
                 errorText: infocontroller
                     .validatePassword(infocontroller.password.value),
               ),
@@ -70,9 +73,11 @@ class CustomColumn extends StatelessWidget {
         Center(
           child: ElevatedButton(
               onPressed: () {
+                // pass list of users from db to be checked against user entered values
+                // if valid then land page -> home
                 infocontroller.updateList(users);
               },
-              child: Text("Login")),
+              child: Text(kLogin)),
         ),
       ],
     );

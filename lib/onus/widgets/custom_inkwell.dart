@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'package:proprios/controller/ip_generic_controller.dart';
 import 'package:proprios/detail/detail_page.dart';
-import 'package:proprios/onus/controller/onus_controller.dart';
+import 'package:proprios/utils/constants/constants.dart';
 
 class CustomInkwell extends StatelessWidget {
   const CustomInkwell({
@@ -12,17 +14,22 @@ class CustomInkwell extends StatelessWidget {
   });
 
   final List<Map<String, dynamic>> unidades;
+  // for index matching the value on onTap
   final int index;
-  final OnusController scontroller;
+  // ip ordered list controller
+  final IpGenericController scontroller;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      // goes to detail page if onTap
+      // finding the correspondent item (index)
       onTap: () {
         final matchingIndex = unidades.indexWhere(
           (item) =>
               item['ipgerenciaonu'].contains(scontroller.orderedList[index]),
         );
+        // land page -> detail page
         Get.to(
           DetailPage(
             index: matchingIndex,
@@ -31,12 +38,15 @@ class CustomInkwell extends StatelessWidget {
         );
       },
       child: Container(
-        color: Colors.greenAccent,
+        color: kSecondaryColor,
         child: Center(
-          // tileColor: Colors.greenAccent,
           child: Text(
+            // sorted onu ip
             scontroller.orderedList[index],
-            style: TextStyle(fontSize: 11.0, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 11.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:proprios/utils/constants/constants.dart';
 
 class InfoController extends GetxController {
   //observable textfield email value
@@ -26,7 +27,7 @@ class InfoController extends GetxController {
   // validate email entered
   String? validateEmail(String value) {
     if (!GetUtils.isEmail(value)) {
-      return "Provide a valid Email";
+      return kValidEmail;
     }
     return null;
   }
@@ -34,7 +35,7 @@ class InfoController extends GetxController {
   // validate password entered
   String? validatePassword(String value) {
     if (value.length < 6) {
-      return "Password must be at least 6 characters";
+      return kValidPassword;
     }
     return null;
   }
@@ -52,25 +53,24 @@ class InfoController extends GetxController {
         // email and password are valid
         if (mutableList[matchingIndex]['password'] == password.value) {
           Get.snackbar(
-              "Success", "Welcome, ${mutableList[matchingIndex]['name']}",
+              kSuccess, "Welcome, ${mutableList[matchingIndex]['name']}",
               snackPosition: SnackPosition.BOTTOM);
 
           // Land page
           Get.offAllNamed('/home');
         } else {
           // found, but password is invalid
-          Get.snackbar("Error", "Email or password invalid",
+          Get.snackbar(kError, kErrorEmailPasswd,
               snackPosition: SnackPosition.BOTTOM);
         }
       } else {
         // not found, data is invalid
-        Get.snackbar("Error", "Email or password invalid",
+        Get.snackbar(kError, kErrorEmailPasswd,
             snackPosition: SnackPosition.BOTTOM);
       }
     } else {
       // no required data entered
-      Get.snackbar("Error", "Please provide valid information",
-          snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(kError, kProvValidInfo, snackPosition: SnackPosition.BOTTOM);
     }
   }
 }

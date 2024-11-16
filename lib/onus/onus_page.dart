@@ -1,31 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'package:proprios/controller/ip_generic_controller.dart';
 import 'package:proprios/home/widgets/custom_appbar.dart';
 import 'package:proprios/home/widgets/custom_drawer.dart';
-import 'package:proprios/onus/controller/onus_controller.dart';
+import 'package:proprios/onus/controller/onus_page_controller.dart';
 import 'package:proprios/onus/widgets/custom_inkwell.dart';
 import 'package:proprios/search/search_page.dart';
-
-class OnusPageBinding extends Bindings {
-  @override
-  void dependencies() {
-    Get.put(OnusController(), permanent: true);
-  }
-}
-
-class OnusPageController extends GetxController {
-  @override
-  void onInit() {
-    debugPrint('on Init');
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    debugPrint('on Ready');
-    super.onReady();
-  }
-}
 
 class OnusPage extends GetView<OnusPageController> {
   final List<Map<String, dynamic>> unidades;
@@ -40,11 +21,18 @@ class OnusPage extends GetView<OnusPageController> {
     // ignore: unused_local_variable
     final MyController mycontroller = Get.put(MyController());
 
-    final scontroller = Get.put(OnusController());
-    scontroller.updateList(unidades);
+    // generic ip sort function
+    final scontroller = Get.put(IpGenericController());
+
+    // pass list of proprios and what to order
+    scontroller.updateList(unidades, "onu");
     return Scaffold(
+      // lateral drawer
       drawer: CustomDrawer(unidades: unidades),
+      // common appBar
       appBar: customAppBar(unidades),
+
+      // gridview builder
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 150,
@@ -53,8 +41,12 @@ class OnusPage extends GetView<OnusPageController> {
             mainAxisSpacing: 2),
         itemCount: scontroller.orderedList.length,
         itemBuilder: (BuildContext context, int index) {
+          // inkwell for onTap control
           return CustomInkwell(
-              unidades: unidades, index: index, scontroller: scontroller);
+            unidades: unidades,
+            index: index,
+            scontroller: scontroller,
+          );
         },
       ),
     );

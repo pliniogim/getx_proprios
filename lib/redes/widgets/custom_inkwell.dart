@@ -2,8 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:proprios/controller/ip_generic_controller.dart';
 import 'package:proprios/detail/detail_page.dart';
-import 'package:proprios/redes/controller/rede_dados_controller.dart';
+import 'package:proprios/utils/constants/constants.dart';
 
 class CustomInkwell extends StatelessWidget {
   const CustomInkwell({
@@ -15,7 +16,7 @@ class CustomInkwell extends StatelessWidget {
 
   final List<Map<String, dynamic>> unidades;
   final int index;
-  final RedeDadosController rcontroller;
+  final IpGenericController rcontroller;
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +33,14 @@ class CustomInkwell extends StatelessWidget {
         );
       },
       child: Container(
-        color: Colors.greenAccent,
+        color: kSecondaryColor,
         child: Center(
-          // tileColor: Colors.greenAccent,
           child: Text(
             rcontroller.orderedList[index],
-            style: TextStyle(fontSize: 11.0, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 11.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),

@@ -31,7 +31,10 @@ class VlanPage extends StatelessWidget {
         itemCount: vcontroller.mutableList.length,
         itemBuilder: (BuildContext context, int index) {
           return CustomPadding(
-              unidades: unidades, index: index, vcontroller: vcontroller);
+            unidades: unidades,
+            index: index,
+            vcontroller: vcontroller,
+          );
         },
       ),
     );

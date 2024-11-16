@@ -1,9 +1,9 @@
 // import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:proprios/controller/ip_generic_controller.dart';
 import 'package:proprios/home/widgets/custom_appbar.dart';
 import 'package:proprios/home/widgets/custom_drawer.dart';
-import 'package:proprios/redes/controller/rede_dados_controller.dart';
 import 'package:proprios/redes/widgets/custom_inkwell.dart';
 import 'package:proprios/search/search_page.dart';
 
@@ -20,8 +20,12 @@ class RedeDados extends StatelessWidget {
     //initialize ahead of use (on search)
     // ignore: unused_local_variable
     final MyController mycontroller = Get.put(MyController());
-    final rcontroller = Get.put(RedeDadosController());
-    rcontroller.updateList(unidades);
+
+    // controller for sorting ips
+    final rcontroller = Get.put(IpGenericController());
+
+    // pass list of proprios and what to order
+    rcontroller.updateList(unidades, "redes");
 
     return Scaffold(
       drawer: CustomDrawer(unidades: unidades),
