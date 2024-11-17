@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../detail/detail_page.dart';
+import 'package:proprios/home/detail/detail_page.dart';
 
 class HomePageInkwell extends StatelessWidget {
   const HomePageInkwell({

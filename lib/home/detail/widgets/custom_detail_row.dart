@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:proprios/detail/controller/ip_controller.dart';
+import 'package:proprios/home/detail/controller/ip_controller.dart';
 
 class CustomDetailRow extends StatelessWidget {
   const CustomDetailRow({

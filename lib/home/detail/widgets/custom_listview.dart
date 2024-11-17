@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proprios/detail/widgets/custom_container.dart';
+import 'package:proprios/home/detail/widgets/custom_container.dart';
 
 customListView(List<Map<String, dynamic>> unidades, int index) {
   return ListView(

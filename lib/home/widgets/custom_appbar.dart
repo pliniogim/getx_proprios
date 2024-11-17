@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proprios/search/search_page.dart';
+import 'package:proprios/utils/constants/constants.dart';
 
 customAppBar(List<Map<String, dynamic>> unidades) {
   return AppBar(
     iconTheme: IconThemeData(color: Colors.white),
-    backgroundColor: Colors.green,
-    elevation: 15.0,
-    shadowColor: Colors.green,
+    backgroundColor: kPrimaryColor,
+    elevation: kElevation,
+    shadowColor: kPrimaryColor,
     title: Text(
-      'PRÓPRIOS - PMSCS (${unidades.length})',
+      '$kAppbarTitle (${unidades.length})',
       style: TextStyle(
-        fontSize: 14.0,
+        fontSize: kAppBarText,
         fontWeight: FontWeight.bold,
-        color: Colors.white,
+        color: kWhite,
       ),
     ),
     actions: <Widget>[
       Padding(
         padding: const EdgeInsets.only(right: 12.0),
         child: IconButton(
-          icon: const Icon(Icons.search),
-          tooltip: 'Search Page',
+          icon: kIconSearch,
+          tooltip: kSearchPage,
           onPressed: () async {
+            // delay time for wait the db read/construc table
             await Future.delayed(const Duration(milliseconds: 500));
             Get.to(
               () => SearchPage(

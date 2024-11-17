@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:proprios/user/user_page.dart';
 import 'package:proprios/utils/constants/constants.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
@@ -146,6 +147,10 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/onus',
           page: () => OnusPage(unidades: unidades),
+        ),
+        GetPage(
+          name: '/users',
+          page: () => UserPage(unidades: unidades, users: users),
         ),
       ],
       debugShowCheckedModeBanner: false,

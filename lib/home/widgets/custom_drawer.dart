@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:proprios/utils/constants/constants.dart';
 
 class CustomDrawer extends StatelessWidget {
   final List<Map<String, dynamic>> unidades;
@@ -15,101 +16,124 @@ class CustomDrawer extends StatelessWidget {
       width: 180,
       child: Drawer(
         elevation: 15.0,
-        shadowColor: Colors.greenAccent,
-        backgroundColor: Colors.green,
+        shadowColor: kSecondaryColor,
+        backgroundColor: kPrimaryColor,
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.greenAccent.withOpacity(0.85),
+                color: kSecondaryColor.withOpacity(0.85),
               ),
               child: Text(
-                'PRÓPRIOS - PMSCS',
+                kAppbarTitle,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.green[800],
+                  color: kGreen800,
                 ),
               ),
             ),
             ListTile(
               title: Text(
-                'Home',
+                kPageHomeTitle,
                 style: TextStyle(
-                  fontSize: 12.0,
+                  fontSize: kDrawerTitleText,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: kBlack,
                 ),
               ),
               tileColor:
-                  Get.currentRoute == '/home' ? Colors.greenAccent : null,
+                  Get.currentRoute == kPageHomeRoute ? kSecondaryColor : null,
               onTap: () {
                 Get.back();
-                Get.offAllNamed('/home');
+                Get.offAllNamed(kPageHomeRoute);
               },
             ),
             ListTile(
               title: Text(
-                'Lista de Vlans',
+                kPageVlanTitle,
                 style: TextStyle(
-                  fontSize: 12.0,
+                  fontSize: kDrawerTitleText,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: kBlack,
                 ),
               ),
               tileColor:
-                  Get.currentRoute == '/vlans' ? Colors.greenAccent : null,
+                  Get.currentRoute == kPageVlanRoute ? kSecondaryColor : null,
               onTap: () {
                 Get.back();
-                Get.offAllNamed('/vlans');
+                Get.offAllNamed(kPageVlanRoute);
               },
             ),
             ListTile(
               title: Text(
-                'Lista de Redes',
+                kPageRedesTitle,
                 style: TextStyle(
-                  fontSize: 12.0,
+                  fontSize: kDrawerTitleText,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: kBlack,
                 ),
               ),
               tileColor:
-                  Get.currentRoute == '/redes' ? Colors.greenAccent : null,
+                  Get.currentRoute == kPageRedesRoute ? kSecondaryColor : null,
               onTap: () {
                 Get.back();
-                Get.offAllNamed('/redes');
+                Get.offAllNamed(kPageRedesRoute);
               },
             ),
             ListTile(
               title: Text(
-                'Lista de Switches',
+                kPageSwitchesTitle,
                 style: TextStyle(
-                  fontSize: 12.0,
+                  fontSize: kDrawerTitleText,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: kBlack,
                 ),
               ),
-              tileColor:
-                  Get.currentRoute == '/switches' ? Colors.greenAccent : null,
+              tileColor: Get.currentRoute == kPageSwitchesRoute
+                  ? kSecondaryColor
+                  : null,
               onTap: () {
                 Get.back();
-                Get.toNamed('/switches');
+                Get.toNamed(kPageSwitchesRoute);
               },
             ),
             ListTile(
               title: Text(
-                'Lista de Onus',
+                kPageOnusTitle,
                 style: TextStyle(
-                  fontSize: 12.0,
+                  fontSize: kDrawerTitleText,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: kBlack,
                 ),
               ),
               tileColor:
-                  Get.currentRoute == '/onus' ? Colors.greenAccent : null,
+                  Get.currentRoute == kPageOnusRoute ? kSecondaryColor : null,
               onTap: () {
                 Get.back();
-                Get.toNamed('/onus');
+                Get.toNamed(kPageOnusRoute);
+              },
+            ),
+            Divider(
+              height: 5,
+              thickness: 2.0,
+              color: Colors.white,
+            ),
+            ListTile(
+              title: Text(
+                kPageUsersTitle,
+                style: TextStyle(
+                  fontSize: kDrawerTitleText,
+                  fontWeight: FontWeight.bold,
+                  color: kBlack,
+                ),
+              ),
+              tileColor: Get.currentRoute == kPageUsersRoute
+                  ? Colors.greenAccent
+                  : null,
+              onTap: () {
+                Get.back();
+                Get.toNamed(kPageUsersRoute);
               },
             ),
           ],

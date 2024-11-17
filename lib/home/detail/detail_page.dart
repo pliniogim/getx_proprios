@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:proprios/detail/controller/ip_controller.dart';
-import 'package:proprios/detail/widgets/custom_detail_row.dart';
-import 'package:proprios/detail/widgets/custom_listview.dart';
+import 'package:proprios/home/detail/controller/ip_controller.dart';
+import 'package:proprios/home/detail/widgets/custom_detail_row.dart';
+import 'package:proprios/home/detail/widgets/custom_listview.dart';
 import 'package:proprios/home/widgets/custom_appbar.dart';
 
 class DetailPage extends StatelessWidget {

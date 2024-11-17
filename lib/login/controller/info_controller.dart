@@ -53,7 +53,7 @@ class InfoController extends GetxController {
         // email and password are valid
         if (mutableList[matchingIndex]['password'] == password.value) {
           Get.snackbar(
-              kSuccess, "Welcome, ${mutableList[matchingIndex]['name']}",
+              kSuccess, "Bem-vindo, ${mutableList[matchingIndex]['name']}",
               snackPosition: SnackPosition.BOTTOM);
 
           // Land page

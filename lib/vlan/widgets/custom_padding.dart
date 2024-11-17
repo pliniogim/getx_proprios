@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:proprios/detail/detail_page.dart';
+import 'package:proprios/home/detail/detail_page.dart';
 import 'package:proprios/vlan/controller/vlan_controller.dart';
 
 class CustomPadding extends StatelessWidget {
