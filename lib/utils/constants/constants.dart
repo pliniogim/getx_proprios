@@ -15,6 +15,10 @@ const kLogin = 'Entrar';
 const kEmail = 'E-mail';
 const kPassword = 'Senha';
 
+const kMoreHard = 'Mais de um equipamento detectado.\nSelecione um da lista.';
+const kConnect = "Conectar";
+const kAlert = 'Alerta!';
+
 const kSearchPage = 'Página de Pesquisa';
 const kNavigationDrawerText = 'Página de Navegação';
 const kChangeUserButtonText = 'Editar usuário...';
@@ -39,6 +43,7 @@ final kSecondaryOpac = Colors.greenAccent.withOpacity(0.5);
 final kGreen800 = Colors.green[800];
 final kBlack = Colors.black;
 final kWhite = Colors.white;
+final kOrange = Colors.orange;
 
 //icon
 const kIconSearch = Icon(Icons.search);

@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:proprios/home/detail/controller/ip_controller.dart';
+import 'package:proprios/utils/constants/constants.dart';
 
 class CustomDetailRow extends StatelessWidget {
   const CustomDetailRow({
@@ -95,21 +97,17 @@ class CustomDetailRow extends StatelessWidget {
       ipcontroller.ipSelection(hardware);
       Get.dialog(
         AlertDialog(
-          title: const Text(
-            'Alert',
+          title: Text(
+            kAlert,
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: Colors.orange,
+              color: kOrange,
             ),
           ),
-          content: const Text(
-              'More than one hardware detected.\nSelect one from the list.'),
+          content: const Text(kMoreHard),
           actions: [
             Obx(
               () => DropdownButton(
-                hint: Text(
-                  'Access ip',
-                ),
                 onChanged: (newValue) {
                   ipcontroller.setSelected(newValue!);
                 },
@@ -127,7 +125,7 @@ class CustomDetailRow extends StatelessWidget {
               ),
             ),
             TextButton(
-              child: const Text("Connect"),
+              child: const Text(kConnect),
               onPressed: () {
                 if (cmd == "s") {
                   Process.run('putty.exe', [
