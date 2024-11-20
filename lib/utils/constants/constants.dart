@@ -36,6 +36,8 @@ const kPageOnusRoute = '/onus';
 const kPageUsersTitle = 'Usuários';
 const kPageUsersRoute = '/users';
 
+const kPageUserDetailName = 'Nome';
+
 //colors
 const kSecondaryColor = Colors.greenAccent;
 const kPrimaryColor = Colors.green;

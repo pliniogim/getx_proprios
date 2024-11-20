@@ -1,8 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:proprios/home/widgets/custom_appbar.dart';
 import 'package:proprios/home/widgets/custom_drawer.dart';
+import 'package:proprios/user/detail/user_detail.dart';
 import 'package:proprios/utils/constants/constants.dart';
 
 class UserPage extends StatelessWidget {
@@ -61,7 +63,15 @@ class UserPage extends StatelessWidget {
                         ),
                         IconButton(
                           tooltip: kChangeUserButtonText,
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(
+                              UserDetail(
+                                index: index,
+                                unidades: unidades,
+                                users: users,
+                              ),
+                            );
+                          },
                           icon: const Icon(Icons.supervised_user_circle),
                         ),
                       ],
