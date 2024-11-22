@@ -1,5 +1,10 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
+
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 class UserController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -47,15 +52,20 @@ class UserController extends GetxController {
     return null;
   }
 
-  void submit() {
+  void submit() async {
     final isValid = formKey.currentState!.validate();
     Get.focusScope!.unfocus();
     if (isValid) {
       formKey.currentState!.save();
-      debugPrint(name);
-      debugPrint(email);
-      debugPrint(level);
-      debugPrint(password);
+      databaseFactory = databaseFactoryFfi;
+      var databasesPath = Directory.current.path;
+      String path = join(databasesPath, 'proprios.db');
+      var db = await databaseFactory.openDatabase(path);
+      await db.rawUpdate(
+          'UPDATE users SET name = ?, email = ?, level = ?, password = ? WHERE email = ?',
+          [name, email, level, password, email]);
+      // users1 = await db.query(kUserTable, orderBy: kUserOrder);
+      db.close();
     }
   }
 }
