@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:path/path.dart';
 import 'package:proprios/user/user_page.dart';
 import 'package:proprios/utils/constants/constants.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -31,9 +32,21 @@ Future main() async {
 
   // factory class
   databaseFactory = databaseFactoryFfi;
+  var databasesPath = Directory.current.path;
+  String path = join(databasesPath, 'proprios.db');
 
   // database in memory
-  var db = await databaseFactory.openDatabase(inMemoryDatabasePath);
+  var db = await databaseFactory.openDatabase(
+    path,
+    options: OpenDatabaseOptions(
+        version: 1,
+        onCreate: (db, version) async {
+          db.execute(kSqlCreate);
+          db.execute(kSqlData);
+          db.execute(kSqlUserCreate);
+          db.execute(kSqlUserData);
+        }),
+  );
 
   // create proprios database
   // all database k constants are from utils/database/dbclass.dart ...git ignored
@@ -57,7 +70,7 @@ Future main() async {
   // redepedagogica text,
   // olt text,
   // obs text)
-  await db.execute(kSqlCreate);
+  //await db.execute(kSqlCreate);
 
   // insert data on proprios
   // INSERT INTO "proprios" ("unidade",
@@ -77,7 +90,7 @@ Future main() async {
   //"redepedagogica",
   //"olt",
   //"obs") VALUES (...)
-  await db.execute(kSqlData);
+  //await db.execute(kSqlData);
 
   // query proprios to map
   var result = await db.query(kDataUnitTable, orderBy: kDataOrder);
@@ -91,11 +104,11 @@ Future main() async {
   // 	"level"	INTEGER,
   // 	PRIMARY KEY("id")
   // );
-  await db.execute(kSqlUserCreate);
+  //await db.execute(kSqlUserCreate);
 
   // create users data
   // INSERT INTO "users" ("id","email","password","level") VALUES (...)
-  await db.execute(kSqlUserData);
+  //await db.execute(kSqlUserData);
 
   // query users to map
   var users = await db.query(kUserTable, orderBy: kUserOrder);
