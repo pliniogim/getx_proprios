@@ -1,8 +1,7 @@
-import 'dart:io';
-
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
@@ -58,14 +57,14 @@ class UserController extends GetxController {
     if (isValid) {
       formKey.currentState!.save();
       databaseFactory = databaseFactoryFfi;
-      var databasesPath = Directory.current.path;
-      String path = join(databasesPath, 'proprios.db');
+      var databasesPath = await getApplicationDocumentsDirectory();
+      String path = join(databasesPath.path, 'proprios.db');
       var db = await databaseFactory.openDatabase(path);
       await db.rawUpdate(
           'UPDATE users SET name = ?, email = ?, level = ?, password = ? WHERE email = ?',
           [name, email, level, password, email]);
-      // users1 = await db.query(kUserTable, orderBy: kUserOrder);
       db.close();
+      Get.back();
     }
   }
 }

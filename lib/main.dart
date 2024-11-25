@@ -4,6 +4,7 @@ import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:proprios/user/user_page.dart';
 import 'package:proprios/utils/constants/constants.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -17,11 +18,10 @@ import 'package:proprios/utils/database/dbclass.dart';
 import 'package:proprios/vlan/vlan_page.dart';
 
 Future main() async {
+  //await widgets being initialized
+  WidgetsFlutterBinding.ensureInitialized();
   //platform check, for android use sqlite on system
   if (Platform.isWindows || Platform.isLinux) {
-    //await widgets being initialized
-    WidgetsFlutterBinding.ensureInitialized();
-
     // preferred initial size of window
     // all k constants are from util/constants/constants.dart except database ones
     appWindow.size = kWindSize;
@@ -29,10 +29,11 @@ Future main() async {
     // Initialize FFI
     sqfliteFfiInit();
   }
-
+  Directory documentsDirectory = await getApplicationDocumentsDirectory();
   // factory class
   databaseFactory = databaseFactoryFfi;
-  var databasesPath = Directory.current.path;
+  var databasesPath = documentsDirectory.path;
+  //var databasesPath = Directory.current.path;
   String path = join(databasesPath, 'proprios.db');
 
   // database in memory
